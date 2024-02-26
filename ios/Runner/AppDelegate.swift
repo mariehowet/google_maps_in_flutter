@@ -11,7 +11,7 @@ import GoogleMaps  // Add this import
     GeneratedPluginRegistrant.register(with: self)
 
     // TODO: Add your Google Maps API key
-    GMSServices.provideAPIKey("AIzaSyAA18SKCT7jKbyDbFe5xJpKK82lUkhAsjM")
+    GMSServices.provideAPIKey("@string/API_KEY")
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
