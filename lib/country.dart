@@ -25,7 +25,7 @@ class Country {
     }
   );
 
-  factory Country.fromJson(dynamic json) {
+  factory Country.fromJson(Map<dynamic, dynamic>  json) {
     return Country(
       name : json['name']['common'],
       officialName : json['name']['official'],
@@ -38,17 +38,4 @@ class Country {
       flagImageUrl: json["flags"]["png"]
     );
   }
-
-
-  Map<String, dynamic> toJson() => {
-      'name': name,
-      'officialName': officialName,
-      'currencies': currency,
-      'capital': capital,
-      'languages':languages,
-      'latlng': latlng,
-      'population': population,
-      'capitalLatlng': capitalLatlng,
-      'flagImageUrl': flagImageUrl
-    };
 }
