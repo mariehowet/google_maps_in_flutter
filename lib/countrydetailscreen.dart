@@ -34,7 +34,7 @@ class CountryDetailsScreen extends StatelessWidget {
             _buildDetailText('Capital Latitude & Longitude','${country.capitalLatlng.latitude}, ${country.capitalLatlng.longitude}'),
             _buildDetailText('Currency', '${country.currency[0]}'),
             _buildDetailList('Languages', (country.languages.map((item) => item.toString()).toList())),
-            //const SizedBox(height: 50.0),
+            const SizedBox(height: 50.0),
           ],
         ),
       ),
@@ -78,6 +78,8 @@ Widget _buildDetailList(String title, List<String> details) {
       padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        textBaseline: TextBaseline.alphabetic,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
         children: <Widget>[
           Text(
             title,
