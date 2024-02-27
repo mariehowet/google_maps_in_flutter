@@ -4,12 +4,19 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+// def localProperties = new Properties()
+// def localPropertiesFile = rootProject.file('local.properties')
+// if (localPropertiesFile.exists()) {
+//     localPropertiesFile.withReader('UTF-8') { reader ->
+//         localProperties.load(reader)
+//     }
+// }
+
 def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        localProperties.load(reader)
-    }
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+def googleMapsApiKey = localProperties.getProperty('googleMapsApiKey')
+if (googleMapsApiKey == null) {
+   googleMapsApiKey = System.getenv("GOOGLE_MAPS_API_KEY_ENVIRONMENT_VARIABLE")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -49,6 +56,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders = [applicationName: "com.example.google_maps_in_flutter",googleMapsApiKey: googleMapsApiKey]
     }
 
     buildTypes {
@@ -65,3 +73,5 @@ flutter {
 }
 
 dependencies {}
+
+
